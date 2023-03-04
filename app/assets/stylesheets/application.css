@@ -14,21 +14,40 @@
  *= require_self
  */
 
- header.main {
-    text-align: center;
-    @media (min-width: 30em) {
-        text-align: left;
-    }
- }
 
- img {
-    float: left;
-    padding: 1em;
-    margin-right: 1em;
-    margin-bottom: 1em;
-    max-height: 150px;
-    max-width: 200px;
-    width: 120px;
-    height: 120px;
-    box-shadow: 0.176em 0.354em 0px rgba(0,0,0,0.75);
+ :root {
+  --color-primary: #191d2d;
+  --color-secondary: #7F5539;
+  --color-white: #FFFFFF;
+  --color-black: #000;
+  --color-grey0: #f8f8f8;
+  --color-grey1: #dbe1e8;
+  --color-grey2: #b2becd;
+  --color-grey3: #6c7983;
+  --color-grey4: #454e56;
+  --color-grey5: #2a2e35;
+  --color-grey6: #12181B;
+  --br-sm-2: 14px;
+  --box-shadow-1: 0 3px 15px rgba(0,0,0,.3);
+}
+
+img {
+  float: left;
+  margin-right: 1em;
+  margin-bottom: 1em;
+  max-height: 130px;
+  max-width: 180px;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  transition: all .4s ease-in-out;
+}
+
+
+body {
+  background-color: #8c97a9;
+  font-size: 1.1rem;
+  color: #f7f6f2;
+  transition: all .4s ease-in-out;
+  font-family: 'Crimson Text', serif;
  }

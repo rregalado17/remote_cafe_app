@@ -10,6 +10,12 @@
       </ul>
     </div>
   <% end %>
+  <h2>Enter User Details</h2>
+
+  <div class="field">
+    <%= form.label :username %>
+    <%= form.text_field :username %>
+  </div>
 
   <div class="field">
     <%= form.label :email %>
@@ -18,17 +24,12 @@
 
   <div class="field">
     <%= form.label :password %>
-    <%= form.password_field :password %>
+    <%= form.password_field :password, size: 40 %>
   </div>
 
   <div class="field">
-    <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation %>
-  </div>
-
-  <div class="field">
-    <%= form.label :username %>
-    <%= form.text_field :username %>
+    <%= form.label :password_confirmation, "Confirm:" %>
+    <%= form.password_field :password_confirmation, id: :user_password_confirmation, size: 40 %>
   </div>
 
   <div class="field">

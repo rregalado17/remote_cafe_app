@@ -2,6 +2,19 @@ class SessionsController < ApplicationController
   skip_before_action :authorize
 
   def new
+    if current_user
+      redirect_to user_path(current_user)
+    else
+      @user = User.new 
+    end
+  end
+
+  def home
+    if current_user
+      redirect_to user_path(current_user)
+    else
+      redirect_to signin_path 
+    end
   end
 
   def create
@@ -16,6 +29,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil 
-    redirect_to cafe_index_url, notice: "Logged out"
+    redirect_to cafes_url, notice: "Logged out"
   end
 end

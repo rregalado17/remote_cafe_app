@@ -1,4 +1,5 @@
 class CafesController < ApplicationController
+  skip_before_action :authorize
   before_action :set_cafe, only: %i[ show edit update destroy ]
 
   # GET /cafes or /cafes.json

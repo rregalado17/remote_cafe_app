@@ -13,3 +13,22 @@
  *= require_tree .
  *= require_self
  */
+
+ header.main {
+    text-align: center;
+    @media (min-width: 30em) {
+        text-align: left;
+    }
+ }
+
+ img {
+    float: left;
+    padding: 1em;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    max-height: 150px;
+    max-width: 200px;
+    width: 120px;
+    height: 120px;
+    box-shadow: 0.176em 0.354em 0px rgba(0,0,0,0.75);
+ }

@@ -31,23 +31,16 @@
   --box-shadow-1: 0 3px 15px rgba(0,0,0,.3);
 }
 
-img {
-  float: left;
-  margin-right: 1em;
-  margin-bottom: 1em;
-  max-height: 130px;
-  max-width: 180px;
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  transition: all .4s ease-in-out;
-}
-
-
 body {
   background-color: #8c97a9;
   font-size: 1.1rem;
   color: #f7f6f2;
   transition: all .4s ease-in-out;
   font-family: 'Crimson Text', serif;
- }
+}
+
+#caro-pic {
+  position: relative;
+  width: 500px;
+  height: 500px;
+}

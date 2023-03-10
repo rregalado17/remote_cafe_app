@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: %i[ show edit update destroy ]
+  # before_action :require_login
 
   # GET /reviews or /reviews.json
   def index
@@ -21,7 +22,12 @@ class ReviewsController < ApplicationController
 
   # POST /reviews or /reviews.json
   def create
-    @review = Review.new(review_params)
+    # @cafe = Cafe.find(params[:cafe_id])
+    # @review = @cafe.reviews.create(review_params.merge(user_id: current_user.id))
+    # if @review.save
+    #   redirect_to cafe_path(@cafe)
+    # end
+    # @review = Review.new(review_params)
 
     respond_to do |format|
       if @review.save
@@ -64,7 +70,17 @@ class ReviewsController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
+    # def review_params
+    #   params.require(:review).permit(:user_id, :cafe_id, :title, :review)
+    # end
+
     def review_params
       params.require(:review).permit(:user_id, :title, :review)
     end
+
+    # def require_login
+    #   return head(:forbidden) unless session.include? :user_id
+    # end
+
 end
+

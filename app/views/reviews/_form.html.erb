@@ -2,7 +2,7 @@
   <%= form_for ([@cafe, @review]) do |f| %>
     <%= f.label :review, class:"form-label row-4" %>
     <%= f.text_area :review, class:"form-control row" %>
-    <%= f.hidden_field :user, values: current_user %>
+    <%= f.hidden_field :user_id, values: current_user.id %>
     <%= f.submit "Add Review", class: "btn btn-primary btn-large" %>
   <% end %>
 </div>

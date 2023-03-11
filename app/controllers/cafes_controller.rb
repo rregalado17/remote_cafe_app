@@ -1,17 +1,18 @@
 class CafesController < ApplicationController
   skip_before_action :authorize
-  before_action :set_cafe, only: %i[ show edit update destroy ]
-
-  # GET /cafes or /cafes.json
-  def index
-    @cafes = Cafe.all
-  end
+  before_action :set_cafe, only: [:show, :edit, :update, :destroy]
+  # before_action :require_login, except: [:show, :index]
 
   # GET /cafes/1 or /cafes/1.json
   def show
     @cafe = Cafe.find(params[:id])
     @review = Review.new
     @reviews = @cafe.reviews
+  end
+
+  # GET /cafes or /cafes.json
+  def index
+    @cafes = Cafe.all
   end
 
   # GET /cafes/new
@@ -25,16 +26,13 @@ class CafesController < ApplicationController
 
   # POST /cafes or /cafes.json
   def create
-    @cafe = Cafe.new(cafe_params)
-
-    respond_to do |format|
-      if @cafe.save
-        format.html { redirect_to cafe_url(@cafe), notice: "Cafe was successfully created." }
-        format.json { render :show, status: :created, location: @cafe }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @cafe.errors, status: :unprocessable_entity }
-      end
+    @user = User.find_by_id(session[:user_id])
+    @cafe = Cafe.new(cafe_params.merge(user_id: current_user.id))
+    if @cafe.save 
+      flash[:notice] = "Cafe created successfully!"
+      redirect_to @cafe 
+    else
+      render "new"
     end
   end
 
@@ -71,4 +69,8 @@ class CafesController < ApplicationController
     def cafe_params
       params.require(:cafe).permit(:title, :description, :longitude, :latitude, :rating, :user_id, :id)
     end
+
+    # def require_login
+    #   return head(:forbidden) unless session.include? :user_id
+    # end
 end

@@ -9,6 +9,9 @@ class CafesController < ApplicationController
 
   # GET /cafes/1 or /cafes/1.json
   def show
+    @cafe = Cafe.find(params[:id])
+    @review = Review.new
+    @reviews = @cafe.reviews
   end
 
   # GET /cafes/new
@@ -66,6 +69,6 @@ class CafesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cafe_params
-      params.require(:cafe).permit(:title, :description, :longitude, :latitude, :rating)
+      params.require(:cafe).permit(:title, :description, :longitude, :latitude, :rating, :user_id, :id)
     end
 end

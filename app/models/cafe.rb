@@ -1,3 +1,3 @@
 class Cafe < ApplicationRecord
-    has_many :reviews, through: :users
+    has_many :reviews
 end

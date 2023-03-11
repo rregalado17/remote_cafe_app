@@ -22,22 +22,12 @@ class ReviewsController < ApplicationController
 
   # POST /reviews or /reviews.json
   def create
-    # @cafe = Cafe.find(params[:cafe_id])
-    # @review = @cafe.reviews.create(review_params.merge(user_id: current_user.id))
-    # if @review.save
-    #   redirect_to cafe_path(@cafe)
-    # end
-    # @review = Review.new(review_params)
-
-    respond_to do |format|
-      if @review.save
-        format.html { redirect_to review_url(@review), notice: "Review was successfully created." }
-        format.json { render :show, status: :created, location: @review }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
-      end
+    @cafe = Cafe.find(params[:cafe_id])
+    @review = @cafe.reviews.create(review_params.merge(user_id: current_user.id))
+    if @review.save
+      redirect_to cafe_path(@cafe)
     end
+    @review = Review.new(review_params)
   end
 
   # PATCH/PUT /reviews/1 or /reviews/1.json

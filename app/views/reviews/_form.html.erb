@@ -1,32 +1,8 @@
-<%= form_with(model: review) do |form| %>
-  <% if review.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
-
-      <ul>
-        <% review.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+<div class = "mt-4">
+  <%= form_for ([@cafe, @review]) do |f| %>
+    <%= f.label :review, class:"form-label row-4" %>
+    <%= f.text_area :review, class:"form-control row" %>
+    <%= f.hidden_field :user, values: current_user %>
+    <%= f.submit "Add Review", class: "btn btn-primary btn-large" %>
   <% end %>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :review %>
-    <%= form.text_area :review %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

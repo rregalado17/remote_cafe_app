@@ -14,17 +14,22 @@
         <li class="nav-item">
             <%= link_to "Reviews", reviews_path, class: "nav-link" %>
         </li>
-        <li class="nav-item active">
-          <%= link_to "Log In", signin_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item active">
-          <%= link_to "Sign Up", signup_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item active">
-          <%= link_to "Log Out", signout_path, method: "delete", class: "nav-link" %>      
-        </li>
-    
       </ul>
+    <% if logged_in? %>
+    <%= link_to "Log Out", signout_path, method: "delete", class: "btn btn-outline-danger" %>
+      Logout
+    </button>    
+    <% else %>
+    <div class="dropdown">
+      <button class="btn btn-outline-info dropdown-toggle me-2" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Join
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li class="nav-item"><%= link_to "Log In", signin_path, class: "dropdown-item" %></li>
+        <li><%= link_to "Sign Up", signup_path, class: "dropdown-item" %></li>
+      </ul>
+    </div>
+    <% end %>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
@@ -32,3 +37,5 @@
     </div>
   </div>
 </nav>
+
+

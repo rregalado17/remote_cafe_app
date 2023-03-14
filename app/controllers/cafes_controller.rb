@@ -1,7 +1,7 @@
 class CafesController < ApplicationController
   skip_before_action :authorize
   before_action :set_cafe, only: [:show, :edit, :update, :destroy]
-  # before_action :require_login, except: [:show, :index]
+  before_action :require_login, except: [:show, :index]
 
   # GET /cafes/1 or /cafes/1.json
   def show
@@ -70,7 +70,7 @@ class CafesController < ApplicationController
       params.require(:cafe).permit(:title, :description, :longitude, :latitude, :rating, :user_id, :id)
     end
 
-    # def require_login
-    #   return head(:forbidden) unless session.include? :user_id
-    # end
+    def require_login
+      return head(:forbidden) unless session.include? :user_id
+    end
 end

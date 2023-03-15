@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: %i[ show edit update destroy ]
-  # before_action :require_login
+  before_action :require_login
 
   # GET /reviews or /reviews.json
   def index
@@ -14,10 +14,6 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   def new
     @review = Review.new
-  end
-
-  # GET /reviews/1/edit
-  def edit
   end
 
   # POST /reviews or /reviews.json
@@ -43,34 +39,24 @@ class ReviewsController < ApplicationController
     end
   end
 
-  # DELETE /reviews/1 or /reviews/1.json
   def destroy
-    @review.destroy
-
-    respond_to do |format|
-      format.html { redirect_to reviews_url, notice: "Review was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    @cafe = Cafe.find(params[:cafe_id])
+    @review = Review.find(params[:id])
+    @review.destroy 
+    redirect_to @cafe
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_review
       @review = Review.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
-    # def review_params
-    #   params.require(:review).permit(:user_id, :cafe_id, :title, :review)
-    # end
-
     def review_params
-      params.require(:review).permit(:user_id, :title, :review)
+      params.require(:review).permit(:user_id, :title, :review, :cafe_id)
     end
 
-    # def require_login
-    #   return head(:forbidden) unless session.include? :user_id
-    # end
-
+    def require_login
+      return head(:forbidden) unless session.include? :user_id
+    end
 end
 

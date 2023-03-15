@@ -3,11 +3,10 @@
         <%= link_to r.user.username, user_path(r.user), class: "btn btn-outline-dark" %> said:
         <%= r.review %>
         <% if logged_in? %>
-            <% if @cafe && @cafe.user_id == current_user.id %>
+            <% if @cafe && (r.user_id == current_user.id) %>
             <%= link_to "Delete", cafe_review_path(r.cafe_id, r.id), method: :delete, class: "btn btn-outline-danger" %>
             <% else %>
             <br>
-            <%= Like Cafe %>
             <% end %>
         <% end %> 
     </div>

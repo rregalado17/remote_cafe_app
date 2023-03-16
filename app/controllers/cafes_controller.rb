@@ -21,7 +21,9 @@ class CafesController < ApplicationController
 
   # GET /cafes/1/edit
   def edit
-    
+    unless current_user.id == @cafe.user_id 
+      redirect_to root_path, notice: 'User is not owner'
+    end
   end
 
   # POST /cafes or /cafes.json

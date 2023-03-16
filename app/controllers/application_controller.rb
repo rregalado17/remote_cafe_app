@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    before_action :authorize 
+    protect_from_forgery with: :exception
     helper_method :current_user, :logged_in?
 
     def current_user
@@ -16,12 +16,4 @@ class ApplicationController < ActionController::Base
             redirect_to login_path
         end
     end
-
-    protected 
-    def authorize 
-        # unless User.find_by(id: session[user_id])
-        #     redirect_to login_url, notice: "Please log in"
-        # end
-    end 
-
 end

@@ -1,5 +1,4 @@
 class CafesController < ApplicationController
-  skip_before_action :authorize
   before_action :set_cafe, only: [:show, :edit, :update, :destroy]
   before_action :require_login, except: [:show, :index]
 
@@ -22,6 +21,7 @@ class CafesController < ApplicationController
 
   # GET /cafes/1/edit
   def edit
+    
   end
 
   # POST /cafes or /cafes.json
@@ -38,15 +38,22 @@ class CafesController < ApplicationController
 
   # PATCH/PUT /cafes/1 or /cafes/1.json
   def update
-    respond_to do |format|
+    if @cafe.user_id == current_user.id
       if @cafe.update(cafe_params)
-        format.html { redirect_to cafe_url(@cafe), notice: "Cafe was successfully updated." }
-        format.json { render :show, status: :ok, location: @cafe }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @cafe.errors, status: :unprocessable_entity }
-      end
+        flash[:notice] = "Cafe updated!"
+    else
+      render 'edit'
     end
+  end
+    # respond_to do |format|
+    #   if @cafe.update(cafe_params)
+    #     format.html { redirect_to cafe_url(@cafe), notice: "Cafe was successfully updated." }
+    #     format.json { render :show, status: :ok, location: @cafe }
+    #   else
+    #     format.html { render :edit, status: :unprocessable_entity }
+    #     format.json { render json: @cafe.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /cafes/1 or /cafes/1.json

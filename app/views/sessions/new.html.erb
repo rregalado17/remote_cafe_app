@@ -4,7 +4,7 @@
     <% end %>
 
     <%= form_tag do %>
-        <h2>Please Log In</h2>
+        <h2>Log In to Remote Cafe</h2>
         <div class="field">
             <%= label_tag :username, 'Username:' %>
             <%= text_field_tag :username, params[:username] %>
@@ -16,8 +16,9 @@
         </div>
 
         <div class="actions">
-            <%= submit_tag "Login" %>
+            <%= submit_tag "Login", class:"btn btn-success" %>
         </div>
     <% end %> 
 
+    <%= link_to "Sign Up", signup_path, class:"btn btn-info" %>
 </section>

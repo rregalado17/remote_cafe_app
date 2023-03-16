@@ -21,6 +21,11 @@
 </p>
 
 <p>
+  <strong>Hours of Operation:</strong>
+  <%= @cafe.latitude %>
+</p>
+
+<p>
   <strong>Rating:</strong>
   <%= @cafe.rating %>
 </p>
@@ -28,8 +33,9 @@
 <%= render 'reviews/review' %>
 
 <% if logged_in? %>
-<%= render 'reviews/form' %>
+  <%= render 'reviews/form' %>
+  <% if @cafe && @cafe.user_id == current_user.id %>
+    <%= link_to 'Edit', edit_cafe_path(@cafe) %> |
+  <% else %>
+  <% end %>
 <% end %>
-
-<%= link_to 'Edit', edit_cafe_path(@cafe) %> |
-<%= link_to 'Back', cafes_path %>

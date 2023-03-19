@@ -22,13 +22,18 @@
   </div>
 
   <div class="field">
-    <%= form.label :longitude %>
-    <%= form.text_field :longitude %>
+    <%= form.label :address %>
+    <%= form.search_field :address, data: {target: "places.field" } %>
   </div>
 
   <div class="field">
-    <%= form.label :latitude %>
-    <%= form.text_field :latitude %>
+    <% form.label :longitude %>
+    <% form.text_field :longitude, data: {target: "places.longitude"} %>
+  </div>
+
+  <div class="field">
+    <% form.label :latitude %>
+    <% form.text_field :latitude, data: {target: "places.latitude"} %>
   </div>
 
   <div class="field">
@@ -38,5 +43,8 @@
 
   <div class="actions">
     <%= form.submit %>
+  </div>
+
+  <div data-target="places.map" style="height:400px ">
   </div>
 <% end %>

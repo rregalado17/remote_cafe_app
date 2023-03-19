@@ -1,4 +1,4 @@
-<%= form_with(model: cafe) do |form| %>
+<%= form_with(model: cafe, data: {controller: "places", action: "google-maps-callback@window->places#initMap"}) do |form| %>
   <% if cafe.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(cafe.errors.count, "error") %> prohibited this cafe from being saved:</h2>

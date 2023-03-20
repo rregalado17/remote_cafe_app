@@ -27,13 +27,13 @@
   </div>
 
   <div class="field">
-    <% form.label :longitude %>
-    <% form.text_field :longitude, data: {target: "places.longitude"} %>
+
+    <%= form.hidden_field :longitude, data: {target: "places.longitude"} %>
   </div>
 
   <div class="field">
-    <% form.label :latitude %>
-    <% form.text_field :latitude, data: {target: "places.latitude"} %>
+ 
+    <%= form.hidden_field :latitude, data: {target: "places.latitude"} %>
   </div>
 
   <div class="field">

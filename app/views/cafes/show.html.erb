@@ -40,7 +40,7 @@
 <% if logged_in? %>
   <%= render 'reviews/form' %>
   <% if @cafe && @cafe.user_id == current_user.id %>
-    <%= link_to 'Edit', edit_cafe_path(@cafe) %> |
+    <%= link_to 'Edit', edit_cafe_path(@cafe) %> |  <%= link_to 'Delete', cafe_path(@cafe), method: :delete, class: "btn btn-outline-danger" %>
   <% else %>
   <% end %>
 <% end %>

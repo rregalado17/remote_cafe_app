@@ -44,3 +44,17 @@
   <% else %>
   <% end %>
 <% end %>
+
+<div id="map">
+<%= " Map goes here" %>
+</div>
+
+<script>
+  function initMap() {
+  let cage = {lat: <%= @cafe.latitude %>, lng: <%= @cafe.longitude %>};
+  let map = new google.maps.Map(
+    document.getElementById('map'), {zoom: 18, center: cage}
+    );
+  let marker = new google.maps.Marker({position: cage, map: map})
+  }
+</script>

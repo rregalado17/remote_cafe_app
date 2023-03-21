@@ -6,7 +6,7 @@ class CafesController < ApplicationController
   def show
     @cafe = Cafe.find(params[:id])
     @review = Review.new
-    @reviews = @cafe.reviews
+    @reviews = @cafe.reviews.includes(:cafe)
   end
 
   # GET /cafes or /cafes.json

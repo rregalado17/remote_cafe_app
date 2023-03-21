@@ -1,16 +1,15 @@
 <h1 class="text-center mt-4" >Recent Cafe Reviews: </h2>
 
-<div class="row justify-content-sm-center"><% Review.recent.each do |rev| %>
-  <div class='col-4 ml-4 mt-4' > 
-    <div class="card text-center shadow mb-4 bg-white rounded ">
-      <div class="card-header"> 
-      <div class="review">
-      <p><%= rev.review %></p>
-      <p><%= rev.cafe.title %>
-      <p>Create at: <%= rev.created_at %></p>
-  </div>
-      </div>
-    </div>
-  </div>
-  <% end %>
+<div class="row justify-content-sm-center">
+    <% Review.recent.each do |rev| %>
+        <div class='col-4 ml-4 mt-4' > 
+            <div class="card text-center shadow mb-4 bg-white rounded ">
+                <div class="card-header"> 
+                    <p><%= rev.review %></p>
+                    <p><%= rev.cafe.title %>
+                    <p>Create at: <%= rev.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
+                </div>
+            </div>
+        </div>
+    <% end %>
 </div>

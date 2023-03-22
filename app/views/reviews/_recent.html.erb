@@ -4,11 +4,11 @@
     <% Review.recent.each do |rev| %>
         <div class='col-4 ml-4 mt-4' > 
             <div class="card text-center shadow mb-4 bg-white rounded ">
+            <p><%= link_to rev.cafe.title, cafe_path(rev.cafe) %>
                 <div class="card-header"> 
                     <p><%= rev.review %></p>
-                    <p><%= rev.cafe.title %>
-                    <p>Create at: <%= rev.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
                 </div>
+                <p>Last Reviewed at: <%= rev.created_at.strftime("%Y-%m-%d %H:%M") %></p>
             </div>
         </div>
     <% end %>

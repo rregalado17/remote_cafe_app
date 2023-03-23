@@ -1,4 +1,5 @@
 
+<%= stylesheet_link_tag "cafes.css" %>
 
 <p id="notice"><%= notice %></p>
 
@@ -37,10 +38,10 @@
   <%= @cafe.rating %>
 </p>
 
-<p>
+<div >
   <strong>Cover:</strong>
-  <%= image_tag(@cafe.cover) %>
-</p>
+  <%= image_tag(@cafe.cover, class:"img-rounded", alt:"Cover Photo", width:"375", height:"450") %>
+</div>
 
 <%= render 'reviews/review' %>
 

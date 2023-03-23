@@ -37,6 +37,11 @@
   <%= @cafe.rating %>
 </p>
 
+<p>
+  <strong>Cover:</strong>
+  <%= image_tag(@cafe.cover) %>
+</p>
+
 <%= render 'reviews/review' %>
 
 <% if logged_in? %>

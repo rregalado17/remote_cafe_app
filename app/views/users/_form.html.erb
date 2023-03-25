@@ -1,4 +1,5 @@
-<%= form_with(model: user) do |form| %>
+<%= form_with(model: user, data: {controller: "places", action: "google-maps-callback@window->places#initMap"}) do |form| %>
+  
   <% if user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -10,7 +11,17 @@
       </ul>
     </div>
   <% end %>
-  <h2>Enter User Details</h2>
+  <h2>Enter Your Details</h2>
+
+  <div class="field">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+  </div>
 
   <div class="field">
     <%= form.label :username %>
@@ -22,22 +33,32 @@
     <%= form.text_field :email %>
   </div>
 
-  <div class="field">
-    <%= form.label :password %>
-    <%= form.password_field :password, size: 40 %>
-  </div>
+<div class="field">
+  <%= form.label :current_city %>
+  <%= form.search_field :current_city, data: {target: "places.field" } %>
+</div>
 
-  <div class="field">
-    <%= form.label :password_confirmation, "Confirm:" %>
-    <%= form.password_field :password_confirmation, id: :user_password_confirmation, size: 40 %>
-  </div>
+<div class="field">
+  <%= form.label :original_city %>
+  <%= form.text_field :original_city %>
+</div>
 
-  <div class="field">
-    <%= form.label :job_role %>
-    <%= form.text_field :job_role %>
-  </div>
+<div class="field">
+  <%= form.label :password %>
+  <%= form.password_field :password, size: 40 %>
+</div>
 
-  <div class="actions">
-    <%= form.submit "Create Profile", class:"btn btn-success" %>
-  </div>
+<div class="field">
+  <%= form.label :password_confirmation, "Confirm:" %>
+  <%= form.password_field :password_confirmation, id: :user_password_confirmation, size: 40 %>
+</div>
+
+<div class="field">
+  <%= form.label :job_role %>
+  <%= form.text_field :job_role %>
+</div>
+
+<div class="actions">
+  <%= form.submit "Create Profile", class:"btn btn-success" %>
+</div>
 <% end %>

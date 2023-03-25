@@ -65,7 +65,17 @@ class CafesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cafe_params
-      params.require(:cafe).permit(:title, :description, :address, :longitude, :latitude, :rating, :user_id, :id, :cover, :carousel)
+      params.require(:cafe).permit(
+        :title, 
+        :description, 
+        :address, 
+        :longitude, 
+        :latitude, 
+        :rating, 
+        :user_id, 
+        :id, 
+        :cover, 
+        :carousel)
     end
 
     def require_login

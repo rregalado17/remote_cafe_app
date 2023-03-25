@@ -21,3 +21,4 @@ window.initMap = function(...args) {
     event.args = args 
     window.dispatchEvent(event)
 }
+

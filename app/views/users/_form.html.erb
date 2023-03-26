@@ -1,9 +1,7 @@
-<%= form_with(model: user, data: {controller: "places", action: "google-maps-callback@window->places#initMap"}) do |form| %>
-  
+<%= form_with(model: user, data: {controller: "places", action: "google-maps-callback@window->places#initMap"}, class:"row g-3") do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
       <ul>
         <% user.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,54 +9,82 @@
       </ul>
     </div>
   <% end %>
-  <h2>Enter Your Details</h2>
 
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
+  <h3>Enter Your Details</h3>
+
+  <div class="col-md-6">
+    <%= form.text_field :first_name, 
+      class:"form-control", 
+      placeholder:"First name", 
+      label: :first_name 
+    %>
   </div>
 
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
+  <div class="col-md-6">
+    <%= form.text_field :last_name, 
+      class:"form-control", 
+      placeholder:"Last name", 
+      label: :last_name 
+    %>
+  </div>  
+  
+  <div class="col-md-6">
+    <%= form.text_field :email, 
+      class:"form-control", 
+      placeholder:"Email",
+      label: :email 
+    %>
+  </div>
+  
+  <div class="col-md-6">
+    <%= form.text_field :username, 
+      class:"form-control", 
+      placeholder:"Choose a Username", 
+      label: :username 
+    %>
+  </div>
+  
+  <div class="col-md-6">
+    <%= form.text_field :original_city, 
+      class:"form-control", 
+      placeholder:"Residential City", 
+      label: :original_city 
+    %>
+  </div>
+  
+  <div class="col-md-6">
+    <%= form.text_field :current_city, 
+      class:"form-control", 
+      placeholder:"Current City", 
+      label: :current_city 
+    %>
+  </div>
+ 
+  <div class="col-md-6">
+    <%= form.password_field :password, 
+      class:"form-control", 
+      placeholder:"Password", 
+      label: :password 
+    %>
+  </div>
+  
+  <div class="col-md-6">
+    <%= form.password_field :password_confirmation, 
+      class:"form-control", 
+      placeholder:"Confirm Password", 
+      label: :password_confirmation 
+    %>
+  </div>
+  
+  <div class="col-md-6">
+    <%= form.text_field :job_role, 
+      class:"form-control", 
+      placeholder:"Job Role", 
+      label: :job_role 
+    %>
   </div>
 
-  <div class="field">
-    <%= form.label :username %>
-    <%= form.text_field :username %>
+  <div class="actions">
+    <%= form.submit "Create Profile", class:"btn btn-success" %>
   </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-
-<div class="field">
-  <%= form.label :current_city %>
-  <%= form.search_field :current_city, data: {target: "places.field" } %>
-</div>
-
-<div class="field">
-  <%= form.label :original_city %>
-  <%= form.text_field :original_city %>
-</div>
-
-<div class="field">
-  <%= form.label :password %>
-  <%= form.password_field :password, size: 40 %>
-</div>
-
-<div class="field">
-  <%= form.label :password_confirmation, "Confirm:" %>
-  <%= form.password_field :password_confirmation, id: :user_password_confirmation, size: 40 %>
-</div>
-
-<div class="field">
-  <%= form.label :job_role %>
-  <%= form.text_field :job_role %>
-</div>
-
-<div class="actions">
-  <%= form.submit "Create Profile", class:"btn btn-success" %>
-</div>
 <% end %>

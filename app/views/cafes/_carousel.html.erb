@@ -1,8 +1,8 @@
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-<% Review.recent.each do |rev| %>
+<% Cafe.all.each do |caf| %>
   <div class="carousel-inner">
     <div class="carousel-item active">
-    <%= image_tag(rev.cafe.cover, class:"mx-auto d-block rounded", width:"804", height:"636", alt:"cafe cover") %>
+    <%= image_tag(caf.cover, class:"mx-auto d-block rounded", width:"804", height:"636", alt:"cafe cover") %>
     </div>
     <% end %>
 

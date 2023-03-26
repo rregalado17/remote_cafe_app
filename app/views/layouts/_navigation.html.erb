@@ -4,7 +4,7 @@
     <%= image_tag 'RC_logo.png', alt: "Remote Cafe" %>
   </a>
 
-      <%= render 'search/form' %>
+    <%= render 'search/form' %>
 
     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
       <li class="nav-item">
@@ -16,8 +16,9 @@
       </li>
     </ul>
   </div>
-
-  <%= link_to "Log Out", signout_path, method: "delete", class: "btn btn-outline-danger" %>
+  <div class="container">
+    <%= link_to "Logout", signout_path, method: "delete", class: "btn btn-outline-danger p4" %>
+  </div>
      
   <% else %>
 

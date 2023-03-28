@@ -41,6 +41,7 @@ class CafesController < ApplicationController
   # PATCH/PUT /cafes/1 or /cafes/1.json
   def update
     if @cafe.update(cafe_params)
+      redirect_to cafe_path(@cafe)
       flash[:notice] = "Cafe updated!"
     else
       render 'edit'

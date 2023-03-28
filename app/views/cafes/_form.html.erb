@@ -1,8 +1,7 @@
-<%= form_with(model: cafe, data: {controller: "places", action: "google-maps-callback@window->places#initMap"}) do |form| %>
+<%= form_with(model: cafe, data: {controller: "places", action: "google-maps-callback@window->places#initMap"}, class:"row g-3") do |form| %>
   <% if cafe.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(cafe.errors.count, "error") %> prohibited this cafe from being saved:</h2>
-
       <ul>
         <% cafe.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,50 +10,64 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="col-md-8">
+    <%= form.text_field :address, 
+      class:"form-control", 
+      placeholder:"Search Cafe Location", 
+      label: :address,
+      data: {target: "places.field" }
+    %>
+  </div>
+
+  <div class="col-md-3">
+    <%= form.text_field :title, 
+      class:"form-control", 
+      placeholder:"Cafe Name", 
+      label: :title
+    %>
+  </div>
+
+  <div class="col-md-8">
+    <%= form.text_field :description, 
+      class:"form-control", 
+      placeholder:"Description", 
+      label: :description
+    %>
+  </div>
+
+  <div class="col-md-3">
+    <%= form.text_field :rating, 
+      class:"form-control", 
+      placeholder:"Rating Test", 
+      label: :rating
+    %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.label "Cover Photo" %>
+    <%= form.file_field :cover, class:"btn btn-light"  %>
   </div>
-
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.search_field :address, data: {target: "places.field" } %>
-  </div>
-
-  <div class="field">
-
-    <%= form.hidden_field :longitude, data: {target: "places.longitude"} %>
-  </div>
-
-  <div class="field">
- 
-    <%= form.hidden_field :latitude, data: {target: "places.latitude"} %>
-  </div>
-
-  <div class="field">
-    <%= form.label :rating %>
-    <%= form.text_field :rating %>
-  </div>
-
-  <div class="field">
-    <%= form.label :cover %>
-    <%= form.file_field :cover %>
-    </div>
 
   <div class="form-check form-switch">
     <%= form.label :carousel, class:"form-check-label", for:"flexSwitchCheckDefault" %>
     <%= form.check_box :carousel %>
   </div>
 
+
+
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit(@cafe.new_record? ? "Create Cafe" : "Update Cafe", class:'btn btn-outline-warning btn-md, pd-2') %>
   </div>
 
+
+
   <div data-target="places.map" style="height:400px ">
+  </div>  
+  
+  <div class="field">
+    <%= form.hidden_field :longitude, data: {target: "places.longitude"} %>
+  </div>
+  <div class="field">
+    <%= form.hidden_field :latitude, data: {target: "places.latitude"} %>
   </div>
 <% end %>

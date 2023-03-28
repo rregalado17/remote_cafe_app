@@ -84,7 +84,9 @@
     %>
   </div>
 
+
   <div class="actions">
-    <%= form.submit "Create Profile", class:"btn btn-success" %>
+    <%= form.submit(@user.new_record? ? "Create Profile" : "Update Profile", class:'btn btn-success btn-md, pd-2') %>
   </div>
+
 <% end %>

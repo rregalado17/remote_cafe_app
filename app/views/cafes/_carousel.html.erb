@@ -1,12 +1,13 @@
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-<% Cafe.all.each do |caf| %>
+
   <div class="carousel-inner">
+  <% Cafe.all.each do |caf| %>
     <div class="carousel-item active">
     <%= image_tag(caf.cover, class:"mx-auto d-block rounded", width:"804", height:"636", alt:"cafe cover") %>
     </div>
     <% end %>
-
   </div>
+
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>

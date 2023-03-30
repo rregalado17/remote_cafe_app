@@ -16,13 +16,14 @@ class CafesController < ApplicationController
 
   # GET /cafes/new
   def new
+
     @cafe = Cafe.new
   end
 
   # GET /cafes/1/edit
   def edit
     unless current_user.id == @cafe.user_id 
-      redirect_to root_path, notice: 'User is not owner'
+      redirect_to root_path, notice: 'You do not own this cafe.'
     end
   end
 
@@ -59,12 +60,10 @@ class CafesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_cafe
       @cafe = Cafe.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def cafe_params
       params.require(:cafe).permit(
         :title, 

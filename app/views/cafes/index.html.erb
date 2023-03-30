@@ -26,4 +26,9 @@
 
 <br>
 
+<% if logged_in? %>
 <%= link_to 'New Cafe', new_cafe_path %>
+  <% else %>
+<% end %>
+
+

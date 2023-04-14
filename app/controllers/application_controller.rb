@@ -22,8 +22,4 @@ class ApplicationController < ActionController::Base
         @query = Cafe.ransack(params[:q])
     end
 
-    def api_key
-        key = Rails.application.credentials.google[:access_key_id]
-    end
-
 end

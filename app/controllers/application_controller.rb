@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
-    before_action  :set_query
+    before_action  :set_query, :api_key
     helper_method :current_user, :logged_in?
 
     def current_user
@@ -21,4 +21,9 @@ class ApplicationController < ActionController::Base
     def set_query
         @query = Cafe.ransack(params[:q])
     end
+
+    def api_key
+        key = Rails.application.credentials.google[:access_key_id]
+    end
+
 end

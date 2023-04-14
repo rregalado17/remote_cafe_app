@@ -1,25 +1,25 @@
-# README
+Remote Cafe is a rails web application that allows users to create an account and comment/review cafes for remote workers. It is meant to help remote workers find cafes that serve quality food and strong wifi.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The app is built on Ruby on Rails and deployed on Heroku.
 
-Things you may want to cover:
+Setup
+You'll need a Ruby environment to run Rails. First do:
+$ rvm use .
+$ bundle install
 
-* Ruby version
+Then you need to create the database structure:
+$ rake db:migrate
 
-* System dependencies
+Lastly, you can you can start the server by doing:
+$ raills s 
 
-* Configuration
+And go to http://localhost:3000/ to view the app. Alternatively, you can go directly to https://remote-cafe-app.herokuapp.com/ to see the app fully deployed. 
 
-* Database creation
+This RoR web app includes has_many, belongs_to and has_many :through associations through a join table that is a user-submittable attribute. My models include validations to defend against invalid data, classes that include chainable scope methods to differentiate data and standard user authentication (signup, login, logout, and passwords).
 
-* Database initialization
+The controllers include reasonable DRY and SOLID principles. Any logic presented in my controllers is encapsulated as methods in my models. My routes include nested resources using RESTful URLs and my forms correctly display validation errors that describe the error in the views.
 
-* How to run the test suite
+My views make use of helper methods and partials where appropriate.
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# remote_cafe_app
+License
+The source code for the site is licensed under the MIT license, which you can find in the MIT-LICENSE.txt file.

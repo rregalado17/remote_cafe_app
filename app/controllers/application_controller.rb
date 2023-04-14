@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
-    before_action  :set_query, :api_key
+    before_action  :set_query
     helper_method :current_user, :logged_in?
 
     def current_user

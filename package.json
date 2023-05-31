@@ -22,6 +22,9 @@
   "devDependencies": {
     "webpack-dev-server": "^3"
   },
+  "engines": {
+    "node": "20.2"
+  },
   "scripts": { 
     "dev": "react-scripts start", 
     "start": "serve -s build", 

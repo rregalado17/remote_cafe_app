@@ -28,7 +28,8 @@
     "webpack-dev-server": "^4"
   },
   "engines": {
-    "node": "20.2"
+    "node": "20.2",
+    "npm": "9.6.7"
   },
   "scripts": {
     "dev": "react-scripts start",

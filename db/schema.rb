@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_24_230414) do
-
+ActiveRecord::Schema[7.0].define(version: 2023_03_24_230414) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
     t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -30,7 +29,7 @@ ActiveRecord::Schema.define(version: 2023_03_24_230414) do
     t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -46,8 +45,8 @@ ActiveRecord::Schema.define(version: 2023_03_24_230414) do
     t.decimal "longitude"
     t.decimal "latitude"
     t.decimal "rating"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "user_id"
     t.string "address"
     t.boolean "carousel", default: false
@@ -57,8 +56,8 @@ ActiveRecord::Schema.define(version: 2023_03_24_230414) do
     t.integer "user_id", null: false
     t.string "title"
     t.text "review"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "cafe_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
@@ -67,13 +66,13 @@ ActiveRecord::Schema.define(version: 2023_03_24_230414) do
     t.string "email"
     t.string "password_digest"
     t.string "username"
+    t.string "job_role"
     t.string "first_name"
     t.string "last_name"
-    t.string "job_role"
     t.string "current_city"
     t.string "original_city"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
